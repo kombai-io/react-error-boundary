@@ -1,20 +1,19 @@
 {
-  "name": "react-error-boundary",
-  "version": "6.0.0",
+  "name": "@kombai/react-error-boundary",
+  "version": "0.1.0",
   "type": "module",
   "description": "Simple reusable React error boundary component",
-  "author": "Brian Vaughn <brian.david.vaughn@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bvaughn/react-error-boundary"
+    "url": "https://github.com/kombai-io/react-error-boundary"
   },
   "packageManager": "pnpm@9.6.0",
   "exports": {
     ".": {
-      "types": "./dist/react-error-boundary.js",
-      "development": "./dist/react-error-boundary.development.js",
-      "default": "./dist/react-error-boundary.js"
+      "types": "./dist/kombai-react-error-boundary.js",
+      "development": "./dist/kombai-react-error-boundary.development.js",
+      "default": "./dist/kombai-react-error-boundary.js"
     },
     "./package.json": "./package.json"
   },
@@ -24,7 +23,7 @@
       "default": "./src/env-conditions/production.ts"
     }
   },
-  "types": "dist/react-error-boundary.d.ts",
+  "types": "dist/kombai-react-error-boundary.d.ts",
   "files": [
     "dist"
   ],
@@ -46,6 +45,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.21.5",
     "@preconstruct/cli": "^2.8.12",
     "@types/assert": "^1.5.10",
