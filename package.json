@@ -1,6 +1,6 @@
 {
   "name": "@kombai/react-error-boundary",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Simple reusable React error boundary component",
   "license": "MIT",

@@ -2,6 +2,12 @@ import React, { ErrorInfo } from "react";
 import { ErrorWithComponentStack, FallbackProps } from "./types";
 import { ErrorBoundary } from "./ErrorBoundary";
 
+declare global {
+  interface Window {
+    sendError?: (error: unknown) => void;
+  }
+}
+
 function ErrorPage(props: FallbackProps) {
   return (
     <div
@@ -129,21 +135,22 @@ function ErrorPage(props: FallbackProps) {
   );
 }
 
-
 export function onError(error: Error, info: ErrorInfo) {
-    if (window.sendError) {
-      const errorWithComponentStack = error as ErrorWithComponentStack;
-      errorWithComponentStack.componentStack = info.componentStack;
-      window.sendError(errorWithComponentStack);
-    }
+  if (window.sendError) {
+    const errorWithComponentStack = error as ErrorWithComponentStack;
+    errorWithComponentStack.componentStack = info.componentStack;
+    window.sendError(errorWithComponentStack);
+  }
 }
 
-export function DefaultErrorBoundary({ children }: {
+export function ErrorBoundaryReporter({
+  children,
+}: {
   children: React.ReactNode;
 }) {
   return (
     <ErrorBoundary FallbackComponent={ErrorPage} onError={onError}>
       {children}
     </ErrorBoundary>
-  ) 
+  );
 }

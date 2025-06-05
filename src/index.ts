@@ -1,9 +1,9 @@
 "use client";
 
-import { DefaultErrorBoundary } from "./DefaultErrorBoundary";
+import { ErrorBoundaryReporter } from "./ErrorBoundaryReporter";
 
-export { DefaultErrorBoundary };
-export * from "./ErrorBoundary";
+export { ErrorBoundaryReporter as ErrorBoundary };
+export { ErrorBoundary as RawErrorBoundary } from "./ErrorBoundary";
 export * from "./ErrorBoundaryContext";
 export * from "./useErrorBoundary";
 export * from "./withErrorBoundary";
@@ -11,4 +11,4 @@ export * from "./withErrorBoundary";
 // TypeScript types
 export * from "./types";
 
-export default DefaultErrorBoundary;
+export default ErrorBoundaryReporter;

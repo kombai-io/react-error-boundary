@@ -1,6 +1,5 @@
 import { ComponentType, ErrorInfo, PropsWithChildren, ReactNode } from "react";
 
-
 export type ErrorWithComponentStack = Error & {
   componentStack?: string | null;
 };
