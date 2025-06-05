@@ -1,5 +1,9 @@
 import { ComponentType, ErrorInfo, PropsWithChildren, ReactNode } from "react";
 
+export type ErrorWithComponentStack = Error & {
+  componentStack?: string | null;
+};
+
 export type FallbackProps = {
   error: any;
   resetErrorBoundary: (...args: any[]) => void;
