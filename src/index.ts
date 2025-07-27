@@ -1,8 +1,8 @@
 "use client";
 
-import { ErrorBoundaryReporter } from "./ErrorBoundaryReporter";
+import { ErrorBoundaryReporter, ErrorPage } from "./ErrorBoundaryReporter";
 
-export { ErrorBoundaryReporter as ErrorBoundary };
+export { ErrorBoundaryReporter as ErrorBoundary, ErrorPage };
 export { ErrorBoundary as RawErrorBoundary } from "./ErrorBoundary";
 export * from "./ErrorBoundaryContext";
 export * from "./useErrorBoundary";

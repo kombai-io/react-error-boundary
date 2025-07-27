@@ -1,5 +1,5 @@
 import React, { ErrorInfo } from "react";
-import { ErrorWithComponentStack, FallbackProps } from "./types";
+import { ErrorWithComponentStack } from "./types";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-function ErrorPage(props: FallbackProps) {
+export function ErrorPage(props: { error: Error }) {
   return (
     <div
       style={{
@@ -37,12 +37,15 @@ function ErrorPage(props: FallbackProps) {
           style={{
             textAlign: "center",
             marginBottom: "32px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "16px",
           }}
         >
           <div
             style={{
-              fontSize: "64px",
-              marginBottom: "16px",
+              fontSize: "32px",
             }}
           >
             ⚠️
@@ -52,7 +55,7 @@ function ErrorPage(props: FallbackProps) {
               color: "#e53e3e",
               fontSize: "32px",
               fontWeight: "700",
-              margin: "0 0 8px 0",
+              margin: "0",
             }}
           >
             Something went wrong
@@ -87,7 +90,9 @@ function ErrorPage(props: FallbackProps) {
               color: "#742a2a",
               fontSize: "14px",
               fontWeight: "500",
-              wordBreak: "break-word",
+              textAlign: "left",
+              overflow: "auto",
+              whiteSpace: "pre",
             }}
           >
             {props.error.message || "No error message available"}
@@ -122,8 +127,7 @@ function ErrorPage(props: FallbackProps) {
                 lineHeight: "1.5",
                 overflow: "auto",
                 maxHeight: "300px",
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-all",
+                whiteSpace: "pre",
               }}
             >
               {props.error.stack}
@@ -149,7 +153,10 @@ export function ErrorBoundaryReporter({
   children: React.ReactNode;
 }) {
   return (
-    <ErrorBoundary FallbackComponent={ErrorPage} onError={onError}>
+    <ErrorBoundary
+      FallbackComponent={(props) => <ErrorPage error={props.error} />}
+      onError={onError}
+    >
       {children}
     </ErrorBoundary>
   );
